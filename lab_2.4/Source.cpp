@@ -21,6 +21,7 @@ class B
 
 class vectorException : std::exception
 {
+public:
 	string what();
 };
 
@@ -69,6 +70,19 @@ int main()
 		while (true) new int[100000000]; // std::bad_alloc
 	}
 	catch(std::bad_alloc ex)
+	{
+		cout << "Error: " << ex.what() << endl;
+	}
+
+	try
+	{
+		vector<int> vect2 = { 1, 2 }, vect3 = { 1, 3, 5 };
+		if (vect2 < vect3)
+		{
+			if (vect2.size() != vect3.size()) throw vectorException();
+		}
+	}
+	catch (vectorException ex)
 	{
 		cout << "Error: " << ex.what() << endl;
 	}
