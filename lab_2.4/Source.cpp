@@ -112,7 +112,7 @@ int main()
 		{
 			if (i == 10) throw "size";
 		}
-		delete[] c; // Утечка, так как эта строка не выполнится из-за исключения
+		delete[] c; // losing of data, because this string won't be done
 	}
 	catch (...)
 	{
@@ -126,7 +126,7 @@ int main()
 		{
 			if (i == 10) throw "size";
 		}
-	    // Утечки нет, так как в диспетчере задач нет характерного "скачка" используемой памяти
+	    // No losing of data, no "jump" in programm manager in data statistic
 	}
 	catch (...)
 	{
