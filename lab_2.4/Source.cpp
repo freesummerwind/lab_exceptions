@@ -1,5 +1,6 @@
 #include <bitset>
 #include <iostream>
+#include <map>
 #include <vector>
 using std::cin;
 using std::cout;
@@ -20,17 +21,52 @@ class B
 
 int main()
 {
-	vector<int> vect1 = { 1, 2, 3, 4 };
-	cout << vect1[4]; // std::out_of_range
+	try
+	{
+		string str1 = "hello";
+		str1.erase(10); // std::out_of_range
+	}
+	catch (std::out_of_range ex)
+	{
+		cout << "Error: " << ex.what() << endl;
+	}
 
-	vector<int> vect2(-5); // std::length_error
+	try
+	{
+		vector<int> vect1(-5); // std::length_error
+	}
+	catch (std::length_error ex)
+	{
+		cout << "Error: " << ex.what() << endl;
+	}
 
-	std::bitset<32> bitset(string("11001010101100001b100101010110000")); // std::invalid_argument
+	try
+	{
+		std::bitset<32> bitset(string("11001010101100001b100101010110000")); // std::invalid_argument
+	}
+	catch (std::invalid_argument ex)
+	{
+		cout << "Error: " << ex.what() << endl;
+	}
 
-	A a1;
-	dynamic_cast<B&> (a1); // std::bad_cast
+	try
+	{
+		A a1;
+		dynamic_cast<B&> (a1); // std::bad_cast
+	}
+	catch (std::bad_cast ex)
+	{
+		cout << "Error: " << ex.what() << endl;
+	}
 
-	while (true) new int[100000000]; // std::bad_alloc
+	try
+	{
+		while (true) new int[100000000]; // std::bad_alloc
+	}
+	catch(std::bad_alloc ex)
+	{
+		cout << "Error: " << ex.what() << endl;
+	}
 	return 0;
 }
 
