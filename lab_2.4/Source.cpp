@@ -27,6 +27,8 @@ public:
 
 int main()
 {
+	cout << "Part 1" << endl;
+
 	try
 	{
 		string str1 = "hello";
@@ -85,6 +87,22 @@ int main()
 	catch (vectorException ex)
 	{
 		cout << "Error: " << ex.what() << endl;
+	}
+
+	cout << endl << "Part 2" << endl;
+
+	try
+	{
+		char* c = new char[10];
+		for (int i = 0; i <= 10; ++i)
+		{
+			if (i == 10) throw "size";
+		}
+		delete[] c; // Утечка, так как эта строка не выполнится из-за исключения
+	}
+	catch (...)
+	{
+		cout << "Error" << endl;
 	}
 	return 0;
 }
