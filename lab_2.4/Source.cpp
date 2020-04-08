@@ -25,6 +25,20 @@ public:
 	string what();
 };
 
+class myChar
+{
+	char* c;
+public:
+	myChar(const int& x)
+	{
+		c = new char[x];
+	}
+	~myChar()
+	{
+		delete[] c;
+	}
+};
+
 int main()
 {
 	cout << "Part 1" << endl;
@@ -103,6 +117,20 @@ int main()
 	catch (...)
 	{
 		cout << "Error" << endl;
+	}
+
+	try
+	{
+		myChar c1(10);
+		for (int i = 0; i <= 10; ++i)
+		{
+			if (i == 10) throw "size";
+		}
+	    // Утечки нет, так как в диспетчере задач нет характерного "скачка" используемой памяти
+	}
+	catch (...)
+	{
+		cout << "Error!!!" << endl;
 	}
 	return 0;
 }
