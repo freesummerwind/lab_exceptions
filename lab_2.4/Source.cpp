@@ -19,6 +19,11 @@ class B
 	virtual void func();
 };
 
+class vectorException : std::exception
+{
+	string what();
+};
+
 int main()
 {
 	try
@@ -78,4 +83,9 @@ void A::func()
 void B::func()
 {
 	cout << "B" << endl;
+}
+
+string vectorException::what()
+{
+	return "these vectors have different sizes";
 }
